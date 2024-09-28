@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="static/img/favicon.ico" />
     <link rel="stylesheet" href="static/main.css" type="text/css" media="all" />
 </head>
-<body>
+<body> 
 <div class="release">
     <div class="release-body">
         <div class="title">
