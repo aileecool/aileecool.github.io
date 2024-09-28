@@ -88,7 +88,7 @@
                     statusText.innerText = '超时';
                     statusText.style.color = 'orange'; // 修改超时状态颜色为黄色
                     resolve();
-                }, 10000); // 设置10秒超时
+                }, 20000); // 设置10秒超时
 
                 img.onload = function() {
                     clearTimeout(timeout);
