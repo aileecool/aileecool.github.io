@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>油条 - 地址发布页</title>
+    <link rel="shortcut icon" href="static/img/favicon.ico" />
+    <link rel="stylesheet" href="static/main.css" type="text/css" media="all" />
+</head>
+<body>
+<div class="release">
+    <div class="release-body">
+        <div class="title">
+            <h2>油条视频</h2>
+            <p>油条最新地址发布页</p><br />
+            <span class="xv" style="color: #fff;font-size: 14px;font-weight: bold;padding: 2.5px 10px;border-radius: 5px;">-</span>
+            <span class="xn" style="color: #fff;font-size: 14px;font-weight: bold;padding: 2.5px 10px;border-radius: 5px;">-</span>
+        </div>
+        <div class="release-main">
+            <div class="links">
+                <ul>
+                    <!--2024/05/01 更新以下地址-->                    
+                    <h2>最近更新时间 2024/09/21</h2>
+                    
+                    <li><a class="xv" href="https://www.xtzspw.top" target="_blank">最新地址一<i>检测中...</i></a></li>
+                    <li><a class="xv" href="https://www.xtzspw111.top" target="_blank">最新地址二<i>检测中...</i></a></li>
+                    <li><a class="xv" href="https://www.xtzspw122.top" target="_blank">最新地址三<i>检测中...</i></a></li>
+                    <li><a class="xv" href="https://www.xtzspw133.top" target="_blank">最新地址四<i>检测中...</i></a></li>
+                    <li><a class="xv" href="https://www.xtz0gobqgfcdkmkddof.top" target="_blank">最新地址五<i>检测中...</i></a></li>
+                    </ul>
+
+                    <ul>
+                    <li><a class="xn" href="https://www.xtzspw.top" target="_blank">备用地址一<i>检测中...</i></a></li>
+                    <li><a class="xn" href="https://www.xtzspw111.top" target="_blank">备用地址二<i>检测中...</i></a></li>
+                    <li><a class="xn" href="https://www.xtzspw122.top" target="_blank">备用地址三<i>检测中...</i></a></li>
+                    <li><a class="xn" href="https://www.xtzspw133.top" target="_blank">备用地址四<i>检测中...</i></a></li>
+                    <li><a class="xn" href="https://www.xtz0gobqgfcdkmkddof.top" target="_blank">备用地址五<i>检测中...</i></a></li>
+                                        
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="release-body">
+        <div class="release-main">
+            <div class="links" style="border-top: none">
+                <ul>
+                    <h2>收藏且记住永久入口</h2>
+                    <li><span>c120c.cc</span></li>
+                    <li><span>c121c.cc</span></li>
+                    <br>
+                    <li><span>---</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 51v6 发布 -->
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"JzpWmS7bAFwZAixb",ck:"JzpWmS7bAFwZAixb"})</script>
+    
+    <footer>
+        <h3>zhaodizhi@mail.ru</h3>
+        <p class="footer">© 2024 . All Rights Reserved</p>
+    </footer>
+</div>
+
+<script>
+    window.onload = function() {
+        var links = document.querySelectorAll('.links a');
+        var MAX_CONCURRENT_REQUESTS = 5; // 最大并发请求数量
+
+        function checkLink(url, statusText) {
+            return new Promise(function(resolve) {
+                var img = new Image();
+                var timestamp = Date.now(); // 当前时间戳
+                var timeout = setTimeout(function() {
+                    statusText.innerText = '超时';
+                    statusText.style.color = 'orange'; // 修改超时状态颜色为黄色
+                    resolve();
+                }, 10000); // 设置10秒超时
+
+                img.onload = function() {
+                    clearTimeout(timeout);
+                    statusText.innerText = '正常';
+                    statusText.style.color = 'green';
+                    resolve();
+                };
+
+                img.onerror = function() {
+                    clearTimeout(timeout);
+                    statusText.innerText = '异常';
+                    statusText.style.color = 'red';
+                    resolve();
+                };
+
+                img.src = url + '/favicon.ico?' + timestamp; // 添加时间戳
+            });
+        }
+
+        function loadLinksSequentially(links) {
+            var index = 0;
+
+            function next() {
+                if (index < links.length) {
+                    var link = links[index++];
+                    var url = link.getAttribute('href');
+                    var statusText = link.querySelector('i');
+                    checkLink(url, statusText).then(next);
+                }
+            }
+
+            next();
+        }
+
+        function loadLinksConcurrently(links) {
+            var index = 0;
+            var activeRequests = 0;
+
+            function onRequestComplete() {
+                activeRequests--;
+                if (index < links.length) {
+                    startRequest(links[index++]);
+                }
+            }
+
+            function startRequest(link) {
+                var url = link.getAttribute('href');
+                var statusText = link.querySelector('i');
+                activeRequests++;
+                checkLink(url, statusText).then(onRequestComplete);
+            }
+
+            while (activeRequests < MAX_CONCURRENT_REQUESTS && index < links.length) {
+                startRequest(links[index++]);
+            }
+        }
+
+        // 根据需求选择加载方式：顺序加载或并发加载
+        // loadLinksSequentially(links);
+        loadLinksConcurrently(links);
+    };
+</script>
+
+</body>
+</html>
